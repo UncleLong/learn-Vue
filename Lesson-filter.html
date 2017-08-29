@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div  id="app">
+        <div>{{id | capitalize | aaaaa | bbb}}</div>
+        <div id="example">
+            <p>Original message: "{{ message }}"</p>
+            <p>Computed reversed message: "{{ reversedMessage }}"</p>
+        </div>
+    </div>
+    <script>
+       var vm = new Vue({
+            el:"#app",
+            data:{
+                id:"ab",
+                message: 'Hello'
+            },
+            filters: {
+                capitalize: function (value) {
+                    if (!value) return ''
+                    value = value.toString()
+                    return value.charAt(0).toUpperCase() + value.slice(1);
+                },
+                aaaaa: function (value) {
+                    if (!value) return ''
+                    return value + "c"
+                },
+                bbb:function(value){
+                    if (!value) return ''
+                    return value.split('').reverse().join('');
+                }
+            },
+            computed: {
+                // a computed getter
+                reversedMessage: function () {
+                    // `this` points to the vm instance
+                    return this.message.split('').reverse().join('')
+                }
+            }
+        });
+       vm.id="abv";
+    try{
+
+    }catch(e){
+        console.log(e)
+    }
+    </script>
+</body>
+</html>
