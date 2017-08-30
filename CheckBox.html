@@ -6,6 +6,7 @@
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
+    <!--多选-->
     <div id="app">
         <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
         <label for="jack">Jack</label>
@@ -16,6 +17,7 @@
         <br>
         <span>Checked names: {{ checkedNames }}</span>
     </div>
+    <!--单选-->
     <div id="example-4">
         <input type="radio" id="one" value="One" v-model="picked">
         <label for="one">One</label>
@@ -24,6 +26,26 @@
         <label for="two">Two</label>
         <br>
         <span>Picked: {{ picked }}</span>
+    </div>
+    <!--单选下拉框-->
+    <div id="example-5">
+        <select v-model="selected">
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+    </div>
+    <!--多选-->
+    <div id="example-6">
+        <select v-model="selected" multiple style="width: 50px">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <br>
+        <span>Selected: {{ selected }}</span>
     </div>
 <script>
     new Vue({
@@ -36,6 +58,18 @@
         el: '#example-4',
         data: {
             picked: ''
+        }
+    });
+    new Vue({
+        el: '#example-5',
+        data: {
+            selected: ''
+        }
+    });
+    new Vue({
+        el: '#example-6',
+        data: {
+            selected: []
         }
     })
 </script>
